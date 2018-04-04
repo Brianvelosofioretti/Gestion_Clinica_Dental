@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module informes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>informes</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/brianvelosofioretti/PycharmProjects/MiProyecto2.0/paquete/informes.py">/Users/brianvelosofioretti/PycharmProjects/MiProyecto2.0/paquete/informes.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="reportlab.lib.colors.html">reportlab.lib.colors</a><br>
+</td><td width="25%" valign=top><a href="sqlite3.html">sqlite3</a><br>
+</td><td width="25%" valign=top><a href="gi.html">gi</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-generaClientes"><strong>generaClientes</strong></a>()</dt><dd><tt>Xeramos&nbsp;o&nbsp;informe&nbsp;dos&nbsp;Clientes&nbsp;usando&nbsp;as&nbsp;librerias&nbsp;de&nbsp;reportlab<br>
+&nbsp;<br>
+Crease&nbsp;unha&nbsp;lista&nbsp;'paxina'&nbsp;a&nbsp;que&nbsp;lle&nbsp;engadiremos&nbsp;os&nbsp;elementos&nbsp;seguintes:<br>
+&nbsp;<br>
+imaxe2&nbsp;--&nbsp;engadimos&nbsp;unha&nbsp;imaxe&nbsp;cos&nbsp;parametros(desplazamentoX,desplazamentoY,ancho,alto)<br>
+&nbsp;<br>
+debuxo2&nbsp;--&nbsp;indicaremos&nbsp;a&nbsp;posicion&nbsp;na&nbsp;que&nbsp;situaremos&nbsp;a&nbsp;imaxe&nbsp;cos&nbsp;parametros&nbsp;(ancho,alto)<br>
+&nbsp;<br>
+debuxo2.add(imaxe2)&nbsp;--&nbsp;engade&nbsp;a&nbsp;imaxe&nbsp;ao&nbsp;noso&nbsp;debuxo<br>
+&nbsp;<br>
+paxina.append(debuxo2)&nbsp;--&nbsp;engade&nbsp;o&nbsp;debuxo&nbsp;a&nbsp;nosa&nbsp;paxina<br>
+-------------------------------------------------------------------------------------------<br>
+A&nbsp;continuación&nbsp;crearemos&nbsp;a&nbsp;conexion&nbsp;a&nbsp;nosa&nbsp;base&nbsp;de&nbsp;datos:<br>
+&nbsp;<br>
+bbdd&nbsp;=&nbsp;dbapi.connect("Clinica.dat")&nbsp;--&nbsp;conecta&nbsp;a&nbsp;base&nbsp;de&nbsp;datos&nbsp;"Clinica.dat"<br>
+&nbsp;<br>
+cursor&nbsp;=&nbsp;bbdd.cursor()&nbsp;--&nbsp;creamos&nbsp;un&nbsp;cursor&nbsp;para&nbsp;executar&nbsp;ordes&nbsp;sobre&nbsp;as&nbsp;taboas<br>
+-------------------------------------------------------------------------------------------<br>
+Pasamos&nbsp;a&nbsp;xerar&nbsp;a&nbsp;tabla&nbsp;no&nbsp;noso&nbsp;informe:<br>
+&nbsp;<br>
+columnas&nbsp;--&nbsp;Creamos&nbsp;as&nbsp;columnas&nbsp;da&nbsp;nosa&nbsp;taboa<br>
+&nbsp;<br>
+cursor.execute&nbsp;--&nbsp;executa&nbsp;a&nbsp;operacion&nbsp;sql&nbsp;deseada<br>
+&nbsp;<br>
+taboa&nbsp;--&nbsp;creamos&nbsp;unha&nbsp;taboa&nbsp;a&nbsp;que&nbsp;lle&nbsp;pasamos&nbsp;as&nbsp;columnas&nbsp;e&nbsp;o&nbsp;resultado&nbsp;da&nbsp;nosa&nbsp;consulta<br>
+&nbsp;<br>
+taboa.setStyle&nbsp;--&nbsp;define&nbsp;o&nbsp;estilo&nbsp;da&nbsp;nosa&nbsp;taboa<br>
+&nbsp;<br>
+paxina.append(taboa)&nbsp;--&nbsp;engade&nbsp;a&nbsp;taboa&nbsp;a&nbsp;nosa&nbsp;paxina<br>
+--------------------------------------------------------------------------------------------<br>
+Por&nbsp;ultimo&nbsp;xeramos&nbsp;o&nbsp;documento&nbsp;pdf&nbsp;para&nbsp;iso&nbsp;debemos&nbsp;realizar&nbsp;o&nbsp;seguinte:<br>
+&nbsp;<br>
+*SimpleDocTemplate&nbsp;--&nbsp;ao&nbsp;que&nbsp;lle&nbsp;pasamos(nome&nbsp;do&nbsp;pdf&nbsp;a&nbsp;xerar,formato&nbsp;da&nbsp;paxina,e&nbsp;borde)<br>
+&nbsp;<br>
+*debemos&nbsp;pasarlle&nbsp;unha&nbsp;referencia<br>
+&nbsp;<br>
+&nbsp;doc.build(paxina)&nbsp;--&nbsp;Xera&nbsp;o&nbsp;informe&nbsp;coa&nbsp;configuracion&nbsp;anterior</tt></dd></dl>
+ <dl><dt><a name="-generaServicios"><strong>generaServicios</strong></a>()</dt><dd><tt>Xeramos&nbsp;o&nbsp;informe&nbsp;dos&nbsp;Servizos&nbsp;usando&nbsp;as&nbsp;librerias&nbsp;de&nbsp;reportlab<br>
+&nbsp;<br>
+Crease&nbsp;unha&nbsp;lista&nbsp;'paxina'&nbsp;a&nbsp;que&nbsp;lle&nbsp;engadiremos&nbsp;os&nbsp;elementos&nbsp;seguintes:<br>
+&nbsp;<br>
+imaxe&nbsp;--&nbsp;engadimos&nbsp;unha&nbsp;imaxe&nbsp;cos&nbsp;parametros(desplazamentoX,desplazamentoY,ancho,alto)<br>
+&nbsp;<br>
+debuxo&nbsp;--&nbsp;indicaremos&nbsp;a&nbsp;posicion&nbsp;na&nbsp;que&nbsp;situaremos&nbsp;a&nbsp;imaxe&nbsp;cos&nbsp;parametros&nbsp;(ancho,alto)<br>
+&nbsp;<br>
+debuxo.add(imaxe)&nbsp;--&nbsp;engade&nbsp;a&nbsp;imaxe&nbsp;ao&nbsp;noso&nbsp;debuxo<br>
+&nbsp;<br>
+paxina.append(debuxo)&nbsp;--&nbsp;engade&nbsp;o&nbsp;debuxo&nbsp;a&nbsp;nosa&nbsp;paxina<br>
+-------------------------------------------------------------------------------------------<br>
+A&nbsp;continuación&nbsp;crearemos&nbsp;a&nbsp;conexion&nbsp;a&nbsp;nosa&nbsp;base&nbsp;de&nbsp;datos:<br>
+&nbsp;<br>
+bbdd&nbsp;=&nbsp;dbapi.connect("Clinica.dat")&nbsp;--&nbsp;conecta&nbsp;a&nbsp;base&nbsp;de&nbsp;datos&nbsp;"Clinica.dat"<br>
+&nbsp;<br>
+cursor&nbsp;=&nbsp;bbdd.cursor()&nbsp;--&nbsp;creamos&nbsp;un&nbsp;cursor&nbsp;para&nbsp;executar&nbsp;ordes&nbsp;sobre&nbsp;as&nbsp;taboas<br>
+-------------------------------------------------------------------------------------------<br>
+Pasamos&nbsp;a&nbsp;xerar&nbsp;a&nbsp;tabla&nbsp;no&nbsp;noso&nbsp;informe:<br>
+&nbsp;<br>
+columnas&nbsp;--&nbsp;Creamos&nbsp;as&nbsp;columnas&nbsp;da&nbsp;nosa&nbsp;taboa<br>
+&nbsp;<br>
+cursor.execute&nbsp;--&nbsp;executa&nbsp;a&nbsp;operacion&nbsp;sql&nbsp;deseada<br>
+&nbsp;<br>
+taboa&nbsp;--&nbsp;creamos&nbsp;unha&nbsp;taboa&nbsp;a&nbsp;que&nbsp;lle&nbsp;pasamos&nbsp;as&nbsp;columnas&nbsp;e&nbsp;o&nbsp;resultado&nbsp;da&nbsp;nosa&nbsp;consulta<br>
+&nbsp;<br>
+taboa.setStyle&nbsp;--&nbsp;define&nbsp;o&nbsp;estilo&nbsp;da&nbsp;nosa&nbsp;taboa<br>
+&nbsp;<br>
+paxina.append(taboa)&nbsp;--&nbsp;engade&nbsp;a&nbsp;taboa&nbsp;a&nbsp;nosa&nbsp;paxina<br>
+--------------------------------------------------------------------------------------------<br>
+Por&nbsp;ultimo&nbsp;xeramos&nbsp;o&nbsp;documento&nbsp;pdf&nbsp;para&nbsp;iso&nbsp;debemos&nbsp;realizar&nbsp;o&nbsp;seguinte:<br>
+&nbsp;<br>
+*SimpleDocTemplate&nbsp;--&nbsp;ao&nbsp;que&nbsp;lle&nbsp;pasamos(nome&nbsp;do&nbsp;pdf&nbsp;a&nbsp;xerar,formato&nbsp;da&nbsp;paxina,e&nbsp;borde)<br>
+&nbsp;<br>
+*debemos&nbsp;pasarlle&nbsp;unha&nbsp;referencia<br>
+&nbsp;<br>
+&nbsp;doc.build(paxina)&nbsp;--&nbsp;Xera&nbsp;o&nbsp;informe&nbsp;coa&nbsp;configuracion&nbsp;anterior</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>A4</strong> = (595.275590551181, 841.8897637795275)</td></tr></table>
+</body></html>

@@ -1,0 +1,5 @@
+#!/usr/local/Cellar/python3
+from paquete import inicio
+from gi.repository import Gtk
+inicio.FiestraPrincipal()
+Gtk.main()

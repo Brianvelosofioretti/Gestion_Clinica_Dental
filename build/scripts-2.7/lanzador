@@ -1,0 +1,5 @@
+#!/usr/bin/python
+from paquete import inicio
+from gi.repository import Gtk
+inicio.FiestraPrincipal()
+Gtk.main()

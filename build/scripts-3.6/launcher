@@ -1,0 +1,11 @@
+#!/usr/local/opt/python3/bin/python3.6
+from paquete import inicio
+from gi.repository import Gtk
+import paquete.inicio
+import paquete.Clientes
+import paquete.insertarClientes
+import paquete.Proyecto
+import paquete.servicios
+import paquete.borrar_con_grid
+inicio.FiestraPrincipal()
+Gtk.main()

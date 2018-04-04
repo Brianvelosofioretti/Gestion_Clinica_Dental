@@ -1,12 +1,14 @@
 import gi
 import sqlite3 as dbapi
-import Proyecto
+from paquete import Proyecto
+
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
+from gi.repository import Gtk,Gdk
 
 class FiestraPrincipal(Gtk.Window):
     def __init__(self):
         Gtk.Window.__init__(self, title='Clinigalia')
+        Gtk.Window.set_resizable(self, False)
         # Un contenedor que superpone widgets uno encima del otro
         self.overlay = Gtk.Overlay()
         self.add(self.overlay)
@@ -17,7 +19,8 @@ class FiestraPrincipal(Gtk.Window):
 
         caja = Gtk.Box(orientation=Gtk.Orientation.VERTICAL,margin_top=70,margin_left=130)
 
-        nomeEmp = Gtk.Label("Usuario")
+        nomeEmp = Gtk.Label()
+        nomeEmp.set_markup("<i><b>Usuario</b></i>")
         entrada = Gtk.Entry(margin_top=10)
 
         caja.add(nomeEmp)
@@ -25,7 +28,8 @@ class FiestraPrincipal(Gtk.Window):
 
         caja2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL,margin_left=130,margin_top=65)
 
-        contra = Gtk.Label("Contraseña")
+        contra = Gtk.Label()
+        contra.set_markup("<i><b>Contraseña</b></i>")
         entrada2 = Gtk.Entry(margin_top=10)
         entrada2.set_visibility(False)  # ocultar campos
 
@@ -38,6 +42,7 @@ class FiestraPrincipal(Gtk.Window):
 
         # en el boton logueo enviamos las variables
         login.connect("clicked", self.on_boton_Clicked, entrada, entrada2)
+        login.modify_fg(Gtk.StateFlags.NORMAL, Gdk.color_parse('green'))
 
         # conectando evento clicked al boton debemos pasar los dos get text
 
@@ -61,26 +66,33 @@ class FiestraPrincipal(Gtk.Window):
             contraseña = entrada2.get_text()
             bbdd = dbapi.connect("Clinica.dat")
             cursor = bbdd.cursor()
-
-            validar = cursor.execute(
+            try:
+                validar = cursor.execute(
                 "select usuario from inicio where usuario =""'" + usuario + "'" + "and contraseña=""'" + contraseña + "'")
 
-            convert = (str(validar.fetchone()[0]))  # sacamos la tupla del fetchone y lo pasamos a string para poder comparar
 
-            if convert == usuario:
-                print("Conectado")
+                consultaUser = (str(validar.fetchone()[0]))  # sacamos la tupla del fetchone y lo pasamos a string para poder comparar
+
+
+                if consultaUser == usuario:
+                 print("Conectado")
+                 fiestra = Proyecto.FiestraPrincipal()
+                 fiestra.show_all()
+                 self.hide()
+
+
 
                 #podemos llamar a otra ventana importando la ventana que queremos y llamando a la clase que contiene la vista
                 #Clientes.FiestraPrincipal()  # llama a la ventana principal
 
-                fiestra = Proyecto.FiestraPrincipal()
-                fiestra.show_all()
-                self.hide()
-            else:
-                print("usuario o contraseña erroneos")
 
+            except :
+                print("error usuario o contraseña")
+
+
+#indicamos la main
 if __name__ == "__main__":
-    fiestra = FiestraPrincipal()
+    FiestraPrincipal()
     Gtk.main()
     Gtk.main_quit()
 
